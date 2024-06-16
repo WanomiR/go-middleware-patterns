@@ -4,10 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN go mod init github.com/wanomir/go-middleware-patterns
+RUN go get -u ./...
 
-RUN go get -u github.com/joho/godotenv
+RUN cd src && go build -o /server
 
-RUN go build -o server
+EXPOSE 4000
 
-CMD ["server"]
+CMD ["/server"]
